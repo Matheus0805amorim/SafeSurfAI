@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>SafeSurf AI</title>
+  <style>
+    body{font-family:system-ui;-webkit-font-smoothing:antialiased;margin:0;width:360px}
+    header{display:flex;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #eee}
+    main{padding:10px 12px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+    button{padding:8px;cursor:pointer}
+    input,textarea,select{width:100%;padding:8px}
+    textarea{height:90px}
+    h2{font-size:14px;margin:12px 0 6px}
+    .hidden{display:none}
+    #riskLevel[data-level="HIGH"]{color:#b00020;font-weight:700}
+    #riskLevel[data-level="MEDIUM"]{color:#b06a00;font-weight:700}
+    #riskLevel[data-level="LOW"]{color:#0a7a20;font-weight:700}
+    pre{white-space:pre-wrap}
+    footer{padding:8px 12px;border-top:1px solid #eee;text-align:right}
+    footer a{font-size:12px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="margin:0;font-size:16px">SafeSurf AI</h1>
+  </header>
+
+  <main>
+    <div class="row">
+      <button id="btnAnalyze">Analyze Page</button>
+      <select id="task">
+        <option value="translate">Translate</option>
+        <option value="rewrite">Rewrite</option>
+        <option value="proofread">Proofread</option>
+      </select>
+      <input id="lang" placeholder="Target lang (e.g., en, pt-BR)" />
+    </div>
+
+    <textarea id="userText" placeholder="Type or paste text for Translate/Rewrite/Proofread"></textarea>
+
+    <section id="results" class="hidden">
+      <h2>Raw Result</h2>
+      <pre id="raw"></pre>
+    </section>
+
+    <section id="summarySec" class="hidden">
+      <h2>Summary</h2>
+      <ul id="summaryList"></ul>
+    </section>
+
+    <section id="riskSec" class="hidden">
+      <h2>Risk</h2>
+      <div id="riskLevel"></div>
+      <ul id="riskSignals"></ul>
+    </section>
+
+    <section id="entitiesSec" class="hidden">
+      <h2>Entities</h2>
+      <ul id="entitiesList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" id="ping">Ping</a>
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

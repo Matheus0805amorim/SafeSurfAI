@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "SafeSurf AI — Chrome Extension (Gemini Nano)",
+  "version": "1.0.0",
+  "description": "Summarize, assess risk, translate and rewrite page content using Chrome's built-in AI (Gemini Nano) or cloud fallback.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service_worker.js",
+    "type": "module"
+  },
+  "options_page": "src/options/options.html",
+  "action": {
+    "default_popup": "src/ui/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content_script.js"]
+    }
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}
